@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <fstream>
+#include "LinkedList.h"
 
 /**
  * catch_setup.h and catch_setup.cpp contain the #define directive for
@@ -27,5 +28,18 @@ int main(int argc, char** argv) {
         o << "Writing to output file." << std::endl;
         o.close();
     }
+
+    LinkedList<int> test;
+    LinkedList<int> test1;
+
+    for (int i = 0; i < 10; i++)
+        test.append(i);
+
+    for (int i = 0; i < 5; i++)
+        test1.append(i);
+
+    test = test1;
+
+
     return 0;
 }
