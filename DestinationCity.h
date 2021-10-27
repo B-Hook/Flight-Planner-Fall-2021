@@ -9,9 +9,13 @@
 using namespace std;
 
 class DestinationCity {
-    private:
-    string cityName;
-
+private:
+    string name;
+    int cost;
+    int time;
+    string carrier;
+public:
+    string getName();
 
 };
 

@@ -3,3 +3,9 @@
 //
 
 #include "OriginCity.h"
+void OriginCity::addCity(DestinationCity city) {
+    cityList.append(city);
+}
+string OriginCity::getName() {
+    return name;
+}

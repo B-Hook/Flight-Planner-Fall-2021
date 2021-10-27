@@ -3,3 +3,7 @@
 //
 
 #include "DestinationCity.h"
+
+string DestinationCity::getName() {
+    return name;
+}

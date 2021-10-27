@@ -1,0 +1,24 @@
+//
+// Created by Braiden Hook on 10/27/21.
+//
+
+#ifndef INC_21F_FLIGHT_PLANNER_ADJACENCYLIST_H
+#define INC_21F_FLIGHT_PLANNER_ADJACENCYLIST_H
+
+#include "LinkedList.h"
+#include "OriginCity.h"
+#include "DestinationCity.h"
+
+class AdjacencyList {
+private:
+    LinkedList<OriginCity> list;
+
+public:
+    void addOriginCity (OriginCity);
+    void addCityDestination (DestinationCity);
+    void cityList();
+
+};
+
+
+#endif //INC_21F_FLIGHT_PLANNER_ADJACENCYLIST_H
