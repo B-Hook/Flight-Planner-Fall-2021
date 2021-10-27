@@ -76,7 +76,7 @@ TEST_CASE("Testing LinkedList"){
             test1.currToNext();
             i++;
         }
-        //REQUIRE(test1.checkNext() == false);
+        REQUIRE(test1.checkNext() == false);
 
     }
 }

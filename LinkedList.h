@@ -136,7 +136,7 @@ public:
             return false;
     }
     bool checkNext(){
-        currToFront();
+        //currToFront();
         if (this->curr != nullptr){
             if (this->curr->next != nullptr)
                 return true;
