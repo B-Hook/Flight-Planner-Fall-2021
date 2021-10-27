@@ -6,6 +6,7 @@
 #include <iostream>
 #include <fstream>
 #include "LinkedList.h"
+#include "DSStack.h"
 
 /**
  * catch_setup.h and catch_setup.cpp contain the #define directive for
@@ -32,12 +33,24 @@ int main(int argc, char** argv) {
     LinkedList<int> test;
     LinkedList<int> test1;
     LinkedList<int> test2;
+    DSStack<int> stack;
 
     for (int i = 0; i < 10; i++)
         test.append(i);
 
     for (int i = 0; i < 5; i++)
         test1.append(i);
+    test.currToFront();
+    for (int i = 0; i < test.getLength(); i++){
+        stack.push(test.getCurrVal());
+        test.currToNext();
+        //stack.pop();
+    }
+    //test.clear();
+    for (int i = 1; i < test.getLength(); i++){
+        std::cout << stack.peek() << std::endl;
+        stack.pop();
+    }
 
     test = test1;
     test2 = test;

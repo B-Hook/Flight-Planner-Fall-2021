@@ -89,6 +89,16 @@ public:
         }
         *length = *length + 1; // increase length by 1
     }
+// Removing last node in the linked list
+    void remove(){
+        if (this->tail != nullptr){
+            Node<T> *deletedNode = this->tail;
+            this->tail = this->tail->prev;
+            this->tail->next = nullptr;
+            delete deletedNode;
+        }
+    }
+
     void clear() {
         //Node<T> *curr = this->head;
         currToFront();
@@ -113,7 +123,20 @@ public:
     T& getCurrVal(){
         return this->curr->data;
     }
+    T& getTailVal(){
+        return this->tail->data;
+    }
+    int getLength(){
+        return *length;
+    }
+    bool checkEmpty(){
+        if (this->head == nullptr)
+            return true;
+        else
+            return false;
+    }
     bool checkNext(){
+        currToFront();
         if (this->curr != nullptr){
             if (this->curr->next != nullptr)
                 return true;
