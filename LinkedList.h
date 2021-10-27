@@ -22,6 +22,7 @@ class LinkedList {
 private: //private data members
     Node <T> *head;
     Node <T> *tail;
+    Node <T> *curr;
     int *length;
 public:
 // Default Constructor
@@ -29,28 +30,30 @@ public:
 
         this->head = nullptr;
         this->tail = nullptr;
+        this->curr = nullptr;
         this->length = new int (0);
     }
 // Destructor
     ~LinkedList() {
-        Node<T> *curr = this->head;
+        currToFront(); //makes curr pointer the head
         //transversing through the list deleting each node
-        while (curr != nullptr){
-            Node<T> *deletedNode = curr;
-            curr = curr->next;
+        while (this->curr != nullptr){
+            Node<T> *deletedNode = this->curr;
+            this->curr = this->curr->next;
             delete deletedNode;
         }
         this->head = nullptr;
         this->tail = nullptr;
+        this->curr = nullptr;
         *length = 0;
     }
 // Copy Constructor
     LinkedList(const LinkedList &copy){
-        Node<T> *curr = copy.head;
+        Node<T> *temp = copy.head;
         //transversing through list copying each node and appending it
-        while (curr != nullptr){
-            append(curr->data);
-            curr = curr->next;
+        while (temp != nullptr){
+            append(temp->data);
+            temp = temp->next;
         }
     }
 // Copy Assignment
@@ -58,11 +61,11 @@ public:
         //if not a copy
         if (this != &copy) {
             this->clear();
-            Node<T> *curr = copy.head;
+            Node<T> *temp = copy.head;
             //transversing through list copying each node and appending it
-            while (curr != nullptr){
-                append(curr->data);
-                curr = curr->next;
+            while (temp != nullptr){
+                append(temp->data);
+                temp = temp->next;
             }
         }
         return *this;
@@ -87,16 +90,40 @@ public:
         *length = *length + 1; // increase length by 1
     }
     void clear() {
-        Node<T> *curr = this->head;
-        while (curr != nullptr){
-            Node<T> *freeNode = curr;
-            curr = curr->next;
+        //Node<T> *curr = this->head;
+        currToFront();
+        while (this->curr != nullptr){
+            Node<T> *freeNode = this->curr;
+            this->curr = this->curr->next;
             free(freeNode);
         }
         this->head = nullptr;
         this->tail = nullptr;
+        this->curr = nullptr;
         *length = 0;
     }
+    void currToFront() {
+        this->curr = this->head;
+    }
+
+    void currToNext(){
+        if (this->curr != nullptr)
+            this->curr = this->curr->next;
+    }
+    T& getCurrVal(){
+        return this->curr->data;
+    }
+    bool checkNext(){
+        if (this->curr != nullptr){
+            if (this->curr->next != nullptr)
+                return true;
+            else
+                return false;
+        }
+        else
+            return false;
+    }
+
 };
 
 

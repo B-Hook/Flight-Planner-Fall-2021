@@ -31,6 +31,7 @@ int main(int argc, char** argv) {
 
     LinkedList<int> test;
     LinkedList<int> test1;
+    LinkedList<int> test2;
 
     for (int i = 0; i < 10; i++)
         test.append(i);
@@ -39,6 +40,7 @@ int main(int argc, char** argv) {
         test1.append(i);
 
     test = test1;
+    test2 = test;
 
 
     return 0;
