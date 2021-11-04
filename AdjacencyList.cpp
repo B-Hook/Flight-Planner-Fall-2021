@@ -48,16 +48,18 @@ void AdjacencyList::cityList(char* data) {
 
         OriginCity oCity;
         oCity.setName(origin);
-        DestinationCity dCity (destination, cost, minutes, airline);
+        //DestinationCity dCity (destination, cost, minutes, airline);
         // Initially I didn't want to add a destination city to the list in origin city,
         // but attempted to do so while debugging
-        oCity.addCity(dCity);
-        //list.currToFront();
+        //oCity.addCity(dCity);
         // checking to see if list is empty,
         // if it is it will go ahead and append the origin city object onto the list
-       // if (list.checkEmpty()){
+        if (list.checkEmpty()){
             list.append(oCity);
-        //}
+            list.currToFront();
+            DestinationCity dCity (destination, cost, minutes, airline);
+            list.getCurrVal().addCity(dCity);
+        }
 
         //while ()
             //if (list.getCurrVal().getName() != origin)
