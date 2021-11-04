@@ -49,6 +49,9 @@ public:
     }
 // Copy Constructor
     LinkedList(const LinkedList &copy){
+        head = tail = curr = nullptr;
+        this->length = copy.length;
+
         Node<T> *temp = copy.head;
         //transversing through list copying each node and appending it
         while (temp != nullptr){
