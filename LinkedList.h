@@ -149,6 +149,10 @@ public:
         else
             return false;
     }
+    bool isCurrNull(){
+        if (this->curr == nullptr) return true;
+        else return false;
+    }
 
 };
 

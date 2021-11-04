@@ -48,18 +48,68 @@ void AdjacencyList::cityList(char* data) {
 
         OriginCity oCity;
         oCity.setName(origin);
+        DestinationCity dCity (destination, cost, minutes, airline);
+        OriginCity reverseOrigin;
+        reverseOrigin.setName(destination);
+        DestinationCity reverseDestination (origin, cost, minutes, airline);
         //DestinationCity dCity (destination, cost, minutes, airline);
         // Initially I didn't want to add a destination city to the list in origin city,
         // but attempted to do so while debugging
         //oCity.addCity(dCity);
         // checking to see if list is empty,
         // if it is it will go ahead and append the origin city object onto the list
-        if (list.checkEmpty()){
+        /*if (list.checkEmpty()){
+            // Adds origin to origin list, adds destination to the origin
             list.append(oCity);
             list.currToFront();
-            DestinationCity dCity (destination, cost, minutes, airline);
+            ////DestinationCity dCity (destination, cost, minutes, airline);
             list.getCurrVal().addCity(dCity);
-        }
+            // adds vice versa
+            ////OriginCity reverseOrigin;
+            ////reverseOrigin.setName(destination);
+            list.append(reverseOrigin);
+            list.currToNext(); // Pointing to the second origin which is a destination of the first origin
+            ////DestinationCity reverseDestination (origin, cost, minutes, airline);
+            list.getCurrVal().addCity(reverseDestination);
+        }*/
+        //else {
+            bool doesExist = false;
+            list.currToFront();
+            while (!list.isCurrNull()){
+                if (list.getCurrVal().getName() == oCity.getName()){
+                    ////DestinationCity dCity (destination, cost, minutes, airline);
+                    list.getCurrVal().addCity(dCity);
+                    doesExist = true;
+                    break;
+                }
+                list.currToNext();
+            }
+            if (!doesExist){
+                list.append(oCity);
+                list.getTailVal().addCity(dCity);
+            }
+
+            // Doing so in reverse
+            doesExist = false;
+            while (!list.isCurrNull()){
+                if (list.getCurrVal().getName() == reverseOrigin.getName()){
+                    list.getCurrVal().addCity(reverseDestination);
+                    doesExist = true;
+                    break;
+                }
+                list.currToNext();
+            }
+            if (!doesExist){
+                list.append(reverseOrigin);
+                list.getTailVal().addCity(reverseDestination);
+            }
+
+            // iterate through list, check to see if origin city exists
+            // if it does add destination to origin city
+            // if it does not add new origin city and destination
+            //TODO: Do not forget to add destination to origin city list
+            // and put the original origin city as a destination
+        //}
 
         //while ()
             //if (list.getCurrVal().getName() != origin)
@@ -69,7 +119,7 @@ void AdjacencyList::cityList(char* data) {
 
     }
 
-
+    int i = 2;
     // Check list for Origin name
     // if not add origin name
 
