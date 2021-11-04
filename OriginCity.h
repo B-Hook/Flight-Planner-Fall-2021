@@ -13,11 +13,12 @@ using namespace std;
 class OriginCity {
 private:
     string name;
-    LinkedList<DestinationCity> cityList;
+    LinkedList<DestinationCity> cityList; // Some issue here not being initialized to null
 public:
-    OriginCity();
-    OriginCity(string);
+    //OriginCity();
+    //OriginCity(string);
     void addCity(DestinationCity);
+    void setName(string);
     string getName();
 
 };

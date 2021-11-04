@@ -46,11 +46,12 @@ void AdjacencyList::cityList(char* data) {
 
         cout << origin << " " << destination << " " << cost << " " << minutes << " " << airline << endl;
 
-        OriginCity oCity(origin);
-        DestinationCity dCity (destination, cost, minutes, airline);
+        OriginCity oCity;
+        oCity.setName(origin);
+        //DestinationCity dCity (destination, cost, minutes, airline);
         // Initially I didn't want to add a destination city to the list in origin city,
         // but attempted to do so while debugging
-        oCity.addCity(dCity);
+        //oCity.addCity(dCity);
         //list.currToFront();
         // checking to see if list is empty,
         // if it is it will go ahead and append the origin city object onto the list

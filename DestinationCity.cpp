@@ -4,7 +4,7 @@
 
 #include "DestinationCity.h"
 
-DestinationCity::DestinationCity() {
+/*DestinationCity::DestinationCity() {
     name = "";
     cost = 0;
     time = 0;
@@ -15,7 +15,7 @@ DestinationCity::DestinationCity(string name, int cost, int time, string carrier
     this->cost = cost;
     this->time = time;
     this->carrier = carrier;
-}
+}*/
 
 string DestinationCity::getName() {
     return name;
