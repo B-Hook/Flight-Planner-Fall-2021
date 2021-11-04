@@ -14,7 +14,7 @@ private:
 
 public:
     //void addOriginCity (OriginCity);
-    void addCityDestination (OriginCity, DestinationCity);
+    void addToList (OriginCity, DestinationCity);
     void cityList(char*);
 
 };
