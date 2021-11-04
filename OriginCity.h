@@ -15,6 +15,8 @@ private:
     string name;
     LinkedList<DestinationCity> cityList;
 public:
+    OriginCity();
+    OriginCity(string);
     void addCity(DestinationCity);
     string getName();
 

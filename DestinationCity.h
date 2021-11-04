@@ -15,6 +15,8 @@ private:
     int time;
     string carrier;
 public:
+    DestinationCity();
+    DestinationCity(string, int, int, string);
     string getName();
 
 };

@@ -64,10 +64,10 @@ TEST_CASE("Testing LinkedList"){
         test1.remove();
         REQUIRE(test1.getTailVal() == 8);
     }
-    //SECTION("Testing Clear"){
-        //test1.clear();
-        //REQUIRE(test1.getTailVal() == NULL);
-    //}
+    SECTION("Testing Clear"){
+        test1.clear();
+        REQUIRE(test1.checkEmpty() == true);
+    }
     SECTION("Check Next"){
         test1.currToFront();
         REQUIRE(test1.checkNext() == true);

@@ -8,15 +8,14 @@
 #include "LinkedList.h"
 #include "OriginCity.h"
 #include "DestinationCity.h"
-
 class AdjacencyList {
 private:
     LinkedList<OriginCity> list;
 
 public:
-    void addOriginCity (OriginCity);
-    void addCityDestination (DestinationCity);
-    void cityList();
+    //void addOriginCity (OriginCity);
+    void addCityDestination (OriginCity, DestinationCity);
+    void cityList(char*);
 
 };
 
