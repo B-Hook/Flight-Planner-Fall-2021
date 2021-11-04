@@ -7,14 +7,12 @@
 #include <iostream>
 #include "AdjacencyList.h"
 
-//void AdjacencyList::addOriginCity(OriginCity city) {
-  //  list.append(city);
-//}
-
 void AdjacencyList::addToList(OriginCity oCity, DestinationCity dCity) {
     bool doesExist = false;
     list.currToFront();
+    // Checking to see if the origin city already exists
     while (!list.isCurrNull()){
+        // If it does it will add the destination city to the list of the origin city
         if (list.getCurrVal().getName() == oCity.getName()){
             list.getCurrVal().addCity(dCity);
             doesExist = true;
@@ -22,6 +20,8 @@ void AdjacencyList::addToList(OriginCity oCity, DestinationCity dCity) {
         }
         list.currToNext();
     }
+    // If the origin city does not already exist it will add the new origin to the origin city list
+    // and the destination to that list of the new origin city
     if (!doesExist){
         list.append(oCity);
         list.getTailVal().addCity(dCity);
@@ -31,18 +31,18 @@ void AdjacencyList::addToList(OriginCity oCity, DestinationCity dCity) {
 
 void AdjacencyList::cityList(char* data) {
 
-    ifstream flights(data);
-    string num;
+    ifstream flights(data); // flight data
+    string num; // for the amount of rows
     getline(flights, num, '\n');
     stringstream lineSS(num);
     int numOfFlights;
     lineSS >> numOfFlights;
-
+    // Looping through all of the flights and appending them to the adjacency list
     for (int i = 0; i < numOfFlights; i++){
         string line, origin, destination, airline, space;
         int cost, minutes;
 
-        getline(flights, line, '\n');
+        getline(flights, line, '\n'); // Reading in one line of the file
         stringstream stream (line);
         getline(stream, origin, ' ');
         getline(stream, destination, ' ');
@@ -52,12 +52,12 @@ void AdjacencyList::cityList(char* data) {
         getline(stream, airline, '\n');
 
         cout << origin << " " << destination << " " << cost << " " << minutes << " " << airline << endl;
-
+        // adding the origin city and its destination to the list
         OriginCity oCity;
         oCity.setName(origin);
         DestinationCity dCity (destination, cost, minutes, airline);
         addToList(oCity, dCity);
-
+        // Making it so it adds the flight from the destination to the origin to the list as well
         OriginCity reverseOrigin;
         reverseOrigin.setName(destination);
         DestinationCity reverseDestination (origin, cost, minutes, airline);
