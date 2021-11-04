@@ -63,4 +63,18 @@ void AdjacencyList::cityList(char* data) {
         DestinationCity reverseDestination (origin, cost, minutes, airline);
         addToList(reverseOrigin, reverseDestination);
     }
+
+    list.currToFront();
+    while(!list.isCurrNull()){
+        cout << list.getCurrVal().getName() << " : ";
+        list.getCurrVal().getCityList().currToFront();
+        while(!list.getCurrVal().getCityList().isCurrNull()){
+            cout << list.getCurrVal().getCityList().getCurrVal().getName() << " (" <<
+                list.getCurrVal().getCityList().getCurrVal().getCarrier() << ") -> ";
+            list.getCurrVal().getCityList().currToNext();
+        }
+        cout << endl;
+        list.currToNext();
+    }
+
 }

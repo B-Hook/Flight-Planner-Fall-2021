@@ -18,8 +18,10 @@ public:
     //OriginCity();
     //OriginCity(string);
     void addCity(DestinationCity);
+    LinkedList<DestinationCity>& getCityList();
     void setName(string);
     string getName();
+
 
 };
 

@@ -18,6 +18,9 @@ public:
     DestinationCity();
     DestinationCity(string, int, int, string);
     string getName();
+    int getCost();
+    int getTime();
+    string getCarrier();
 
 };
 

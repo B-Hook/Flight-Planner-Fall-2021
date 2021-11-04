@@ -13,7 +13,6 @@ private:
     LinkedList<OriginCity> list;
 
 public:
-    //void addOriginCity (OriginCity);
     void addToList (OriginCity, DestinationCity);
     void cityList(char*);
 
