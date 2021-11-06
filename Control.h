@@ -16,7 +16,7 @@ class Control {
 private:
     //LinkedList<OriginCity> passedList;
     DSStack<DestinationCity> myStack;
-    AdjacencyList myList;
+    //AdjacencyList myList;
 
 public:
     void backtracking (char*, char*);
