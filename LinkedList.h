@@ -23,7 +23,7 @@ private: //private data members
     Node <T> *head;
     Node <T> *tail;
     Node <T> *curr;
-    int *length;
+    //int *length;
 public:
 // Default Constructor
     LinkedList() {
@@ -31,7 +31,7 @@ public:
         this->head = nullptr;
         this->tail = nullptr;
         this->curr = nullptr;
-        this->length = new int (0);
+        //this->length = new int (0);
     }
 // Destructor
     ~LinkedList() {
@@ -45,12 +45,12 @@ public:
         this->head = nullptr;
         this->tail = nullptr;
         this->curr = nullptr;
-        *length = 0;
+        //*length = 0;
     }
 // Copy Constructor
     LinkedList(const LinkedList &copy){
         head = tail = curr = nullptr;
-        this->length = copy.length;
+        //this->length = copy.length;
 
         Node<T> *temp = copy.head;
         //transversing through list copying each node and appending it
@@ -90,15 +90,22 @@ public:
             newNode->prev = this->tail; // Making the prev pointer of the new node to the previous node
             this->tail = newNode; //Making the new node the tail of the list
         }
-        *length = *length + 1; // increase length by 1
+        //*length = *length + 1; // increase length by 1
     }
 // Removing last node in the linked list
     void remove(){
-        if (this->tail != nullptr){
+        if (this->tail->prev == nullptr){
+            Node<T> *deletedNode = this->tail;
+            this->head = nullptr;
+            this->tail = nullptr;
+            this->curr = nullptr;
+            free (deletedNode);
+        }
+        else {
             Node<T> *deletedNode = this->tail;
             this->tail = this->tail->prev;
             this->tail->next = nullptr;
-            delete deletedNode;
+            free (deletedNode);
         }
     }
 
@@ -113,7 +120,7 @@ public:
         this->head = nullptr;
         this->tail = nullptr;
         this->curr = nullptr;
-        *length = 0;
+        //*length = 0;
     }
     void currToFront() {
         this->curr = this->head;
@@ -129,9 +136,9 @@ public:
     T& getTailVal(){
         return this->tail->data;
     }
-    int getLength(){
+    /*int getLength(){
         return *length;
-    }
+    }*/
     bool checkEmpty(){
         if (this->head == nullptr)
             return true;

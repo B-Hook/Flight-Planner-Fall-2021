@@ -23,7 +23,7 @@ public:
         if (isEmpty() != true)
             data.remove();
     }
-    T peek(){
+    T& peek(){
         if (isEmpty() != true)
             return data.getTailVal();
     }

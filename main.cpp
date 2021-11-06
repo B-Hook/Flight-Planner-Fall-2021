@@ -9,6 +9,7 @@
 #include "LinkedList.h"
 #include "DSStack.h"
 #include "AdjacencyList.h"
+#include "Control.h"
 /**
  * catch_setup.h and catch_setup.cpp contain the #define directive for
  * the CATCH2 framework.  You can see in main below how I'm calling the
@@ -38,8 +39,10 @@ int main(int argc, char** argv) {
         std::ofstream o(argv[3]);
         o << "Writing to output file." << std::endl;
         o.close();
-        AdjacencyList list;
-        list.cityList(argv[1]);
+        Control c;
+        c.backtracking(argv[1], argv[2]);
+        //AdjacencyList list;
+        //list.cityList(argv[1]);
 
     }
 
@@ -57,13 +60,13 @@ int main(int argc, char** argv) {
     for (int i = 0; i < 5; i++)
         test1.append(i);
     test.currToFront();
-    for (int i = 0; i < test.getLength(); i++){
+    while (test.isCurrNull()){
         stack.push(test.getCurrVal());
         test.currToNext();
         //stack.pop();
     }
     //test.clear();
-    for (int i = 1; i < test.getLength(); i++){
+    while (!stack.isEmpty()){
         std::cout << stack.peek() << std::endl;
         stack.pop();
     }
