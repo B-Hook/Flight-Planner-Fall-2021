@@ -1,10 +1,10 @@
 //
-// Created by Braiden Hook on 11/5/21.
+// Created by Braiden Hook on 11/7/21.
 //
 
-#include "Control.h"
+#include "Backtracking.h"
 
-/*void Control::backtracking(char* flights, char* requestsFile) {
+void Backtracking::Backtracking(char* flights, char* requestsFile) {
 
     ifstream requests(requestsFile);
 
@@ -166,12 +166,8 @@
             std::cout << departing << " " << finalOptions.getCurrVal().getTotalTime() << " : "
             << finalOptions.getCurrVal().getTotalCost()<< "\n" << std::endl;
             finalOptions.currToNext();
-        }
+        }*/
         count++;
     }
-
-}*/
-
-Control::Control(char *, char *, char *) {
 
 }

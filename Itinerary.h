@@ -16,7 +16,7 @@ private:
     int count = 1;
 
 public:
-    void top3 (Flight, string, int, int);
+    void top3 (Flight, string);
     LinkedList <Flight>& getTop3();
 };
 

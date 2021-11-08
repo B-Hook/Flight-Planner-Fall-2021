@@ -16,11 +16,12 @@
 class Control {
 private:
     //LinkedList<OriginCity> passedList;
-    DSStack<DestinationCity> myStack;
+    //DSStack<DestinationCity> myStack;
     //AdjacencyList myList;
 
 public:
-    void backtracking (char*, char*);
+    //void backtracking (char*, char*);
+    void Control(char*, char*, char*);
 
 
 };

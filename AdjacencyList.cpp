@@ -47,8 +47,6 @@ void AdjacencyList::cityList(char* data) {
         //stream >> minutes;
         getline (stream, space, ' ');
         getline(stream, airline, '\n');
-
-        cout << origin << " " << destination << " " << cost << " " << minutes << " " << airline << endl;
         // adding the origin city and its destination to the list
         OriginCity oCity;
         oCity.setName(origin);
@@ -61,7 +59,7 @@ void AdjacencyList::cityList(char* data) {
         addToList(reverseOrigin, reverseDestination);
     }
 
-    list.currToFront();
+    /*list.currToFront();
     while(!list.isCurrNull()){
         cout << list.getCurrVal().getName() << " : ";
         list.getCurrVal().getCityList().currToFront();
@@ -72,7 +70,7 @@ void AdjacencyList::cityList(char* data) {
         }
         cout << endl;
         list.currToNext();
-    }
+    }*/
 
 }
 
