@@ -16,17 +16,22 @@ public:
     DSStack(){
 
     }
+    // Calls append method after pushing the newObj onto the stack
+    // Append will place it on the top of the stack
     void push(T newObj){
         data.append(newObj);
     }
+    // Will take the top value off of the stack
     void pop(){
         if (isEmpty() != true)
             data.remove();
     }
+    // Will return the value on the top of the stack
     T& peek(){
         if (isEmpty() != true)
             return data.getTailVal();
     }
+    // Checks to see if there is anything in the stack
     bool isEmpty() {
         if (data.checkEmpty() == true)
             return true;

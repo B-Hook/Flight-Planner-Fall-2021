@@ -7,11 +7,7 @@
 
 #include <fstream>
 #include "LinkedList.h"
-#include "DSStack.h"
-#include "OriginCity.h"
-#include "DestinationCity.h"
 #include "AdjacencyList.h"
-#include "Flight.h"
 #include "Itinerary.h"
 #include "Request.h"
 #include "Backtracking.h"
@@ -20,16 +16,13 @@ class Control {
 private:
     int numOfRequests;
     LinkedList<Request> allRequests;
-    LinkedList<Itinerary> completeItinerary;
+    LinkedList<Itinerary> completeItinerary; // Stores final Itineraries
 
 public:
-    //void backtracking (char*, char*);
+    // Overload Constructor, walks through each step in program
     Control(char*, char*, char*);
-    void readInRequests(char*);
-    void writeToFile(char*);
-
-
-
+    void readInRequests(char*); // req-flights
+    void writeToFile(char*); // Output
 };
 
 #endif //INC_21F_FLIGHT_PLANNER_CONTROL_H

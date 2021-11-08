@@ -7,14 +7,15 @@
 #include <string>
 
 using namespace std;
-
+// Destination city is what is in each node on the right side of the adjacency list
+// Seems pretty self-explanatory.
 class DestinationCity {
 private:
-    string name;
+    string name; // name of Destination City
     int cost;
     int time;
     string carrier;
-    string origin;
+    string origin; // name of the Origin city the destination city belongs to
 public:
     DestinationCity();
     DestinationCity(string, int, int, string, string);

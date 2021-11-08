@@ -12,12 +12,12 @@
 class Itinerary {
 
 private:
-    LinkedList <Flight> top3Flights;
-    int count = 1;
+    LinkedList <Flight> top3Flights; // Stores the top 3 flights patterns
+    int count = 0; // To keep track of the amount of flights
 
 public:
-    void top3 (Flight, string);
-    LinkedList <Flight>& getTop3();
+    void top3 (Flight, string); // Calculates if the new flight is eligible to join the top 3
+    LinkedList <Flight>& getTop3(); // Returns the top 3
 };
 
 

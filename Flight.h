@@ -17,8 +17,11 @@ private:
     LinkedList<DestinationCity> path;
 public:
     Flight();
+    // Overload constructor which sends the new path to the object
     Flight(LinkedList<DestinationCity>&);
+    // Will calculate total cost and time
     void calculateCostTime();
+    // Returning private data members when called
     int getTotalCost();
     int getTotalTime();
     LinkedList<DestinationCity>& getPath();

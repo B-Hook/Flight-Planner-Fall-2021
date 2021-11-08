@@ -23,31 +23,31 @@ void AdjacencyList::addToList(OriginCity oCity, DestinationCity dCity) {
         list.append(oCity);
         list.getTailVal().addCity(dCity);
     }
-
 }
 
 void AdjacencyList::cityList(char* data) {
 
-    ifstream flights(data); // flight data
-    string num; // for the amount of rows
+    ifstream flights(data); // Flight data
+    string num; // Buffer for the amount of rows
+    // Reading in the number of flights and turning it into an int
     getline(flights, num, '\n');
     stringstream lineSS(num);
     int numOfFlights;
     lineSS >> numOfFlights;
+
     // Looping through all of the flights and appending them to the adjacency list
     for (int i = 0; i < numOfFlights; i++){
         string line, origin, destination, airline, space;
         int cost, minutes;
-
-        getline(flights, line, '\n'); // Reading in one line of the file
+        // Reading in one line of the file
+        getline(flights, line, '\n');
         stringstream stream (line);
         getline(stream, origin, ' ');
         getline(stream, destination, ' ');
         stream >> cost >> minutes;
-        //stream >> minutes;
         getline (stream, space, ' ');
         getline(stream, airline, '\n');
-        // adding the origin city and its destination to the list
+        // Adding the origin city and its destination to the list
         OriginCity oCity;
         oCity.setName(origin);
         DestinationCity dCity (destination, cost, minutes, airline, origin);
@@ -58,20 +58,6 @@ void AdjacencyList::cityList(char* data) {
         DestinationCity reverseDestination (origin, cost, minutes, airline, destination);
         addToList(reverseOrigin, reverseDestination);
     }
-
-    /*list.currToFront();
-    while(!list.isCurrNull()){
-        cout << list.getCurrVal().getName() << " : ";
-        list.getCurrVal().getCityList().currToFront();
-        while(!list.getCurrVal().getCityList().isCurrNull()){
-            cout << list.getCurrVal().getCityList().getCurrVal().getName() << " (" <<
-                list.getCurrVal().getCityList().getCurrVal().getCarrier() << ") -> ";
-            list.getCurrVal().getCityList().currToNext();
-        }
-        cout << endl;
-        list.currToNext();
-    }*/
-
 }
 
 LinkedList<OriginCity> &AdjacencyList::getList() {

@@ -19,8 +19,11 @@ class Backtracking {
 private:
     Itinerary requestedItinerary;
 public:
+    // Backtracks the adjacency list and creates an itinerary of the top 3 best options
     Backtracking(Request, AdjacencyList&);
+    // Placing the 3 best flights into an itinerary
     void setItinerary (Itinerary&);
+    // Getting the 3 best flights
     Itinerary getItinerary();
 
 };

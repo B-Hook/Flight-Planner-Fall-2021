@@ -14,6 +14,7 @@
  */
 
 #include "catch.hpp"
+#include "DSStack.h"
 #include "LinkedList.h"
 
 TEST_CASE("Testing Tests", "[multiplication]") {
@@ -60,23 +61,126 @@ TEST_CASE("Testing LinkedList"){
         REQUIRE(test1.getTailVal() == 20);
         REQUIRE(test3.getTailVal() == 5);
     }
+    SECTION("Testing Insert"){
+        test1.currToFront();
+        int count = 0;
+        while (count < 5){
+            test1.currToNext();
+        }
+        test1.insert(20);
+        REQUIRE(test1.getCurrVal() == 20);
+        test1.currToPrev();
+        REQUIRE(test1.getCurrVal() == 4);
+        test1.currToNext();
+        test1.currToNext();
+        REQUIRE(test1.getCurrVal() == 5);
+        test2.currToFront();
+        test2.insert(30);
+        test2.currToFront();
+        REQUIRE(test2.getCurrVal() == 30);
+        test2.currToBack();
+        test2.insert(50);
+        REQUIRE(test2.getTailVal() == 50);
+    }
     SECTION("Testing Remove"){
         test1.remove();
         REQUIRE(test1.getTailVal() == 8);
+        LinkedList<int> test4;
+        test4.append(4);
+        test4.remove();
+        REQUIRE(test4.checkEmpty() == true);
     }
     SECTION("Testing Clear"){
         test1.clear();
         REQUIRE(test1.checkEmpty() == true);
+        test3.clear();
+        REQUIRE(test3.checkEmpty() == true);
     }
-    SECTION("Check Next"){
+    SECTION("Testing currToFront") {
         test1.currToFront();
-        REQUIRE(test1.checkNext() == true);
-        int i = 0;
-        while(i < 9) {
-            test1.currToNext();
-            i++;
-        }
-        REQUIRE(test1.checkNext() == false);
+        REQUIRE(test1.getCurrVal() == 0);
+        test3.currToFront();
+        REQUIRE(test3.isCurrNull() == true);
+    }
+    SECTION("Testing currToBack") {
+        test1.currToBack();
+        REQUIRE(test1.getCurrVal() == 9);
+        test3.currToBack();
+        REQUIRE(test3.isCurrNull() == true);
+    }
+    SECTION("Testing currToNext") {
+        test1.currToFront();
+        test1.currToNext();
+        REQUIRE(test1.getCurrVal() == 1);
+        test3.append(2);
+        test3.currToFront();
+        test3.currToNext();
+        REQUIRE(test3.isCurrNull() == true);
+    }
+    SECTION("Testing currToPrev") {
+        test1.currToBack();
+        test1.currToPrev();
+        REQUIRE(test1.getCurrVal() == 8);
+        test3.append(2);
+        test3.currToBack();
+        test3.currToPrev();
+        REQUIRE(test3.isCurrNull() == true);
+    }
+    SECTION("Testing getCurrVal"){
+        test1.currToFront();
+        test1.currToNext();
+        REQUIRE(test1.getCurrVal() == 1);
+    }
+    SECTION("Testing getTailVal"){
+        REQUIRE(test1.getTailVal() == 9);
+        test3.append(1);
+        REQUIRE(test3.getTailVal() == 1);
+    }
+    SECTION("Testing checkEmpty"){
+        REQUIRE(test3.checkEmpty() == true);
+        REQUIRE(test1.checkEmpty() == false);
+    }
+    SECTION("Testing isCurrNull"){
+        REQUIRE(test1.isCurrNull() == true);
+        test1.currToFront();
+        REQUIRE(test1.isCurrNull() == false);
+        test1.currToPrev();
+        REQUIRE(test1.isCurrNull() == true);
+    }
+}
+TEST_CASE("Testing DSStack"){
 
+    DSStack<int> test1;
+    DSStack<int> test2;
+
+    for (int i = 0; i < 10; i++){
+        test1.push(i);
+    }
+
+    SECTION("Testing push"){
+        test1.push(15);
+        REQUIRE(test1.peek() == 15);
+        REQUIRE(test1.peek() != 10);
+        test2.push(20);
+        REQUIRE(test2.peek() == 20);
+        REQUIRE(test2.peek() != 25);
+    }
+    SECTION("Testing pop"){
+        test1.pop();
+        REQUIRE(test1.peek() == 8);
+        REQUIRE(test1.peek() != 9);
+        test2.push(20);
+        test2.pop();
+        REQUIRE(test2.isEmpty() == true);
+        REQUIRE(test2.isEmpty() != true);
+    }
+    SECTION("Testing peek"){
+        REQUIRE(test1.peek() == 9);
+    }
+    SECTION("Testing isEmpty"){
+        REQUIRE(test1.isEmpty() == false);
+        REQUIRE(test1.isEmpty() != true);
+        REQUIRE(test2.isEmpty() == true);
+        REQUIRE(test2.isEmpty() != false);
     }
 }

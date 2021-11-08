@@ -10,15 +10,16 @@
 #include "LinkedList.h"
 
 using namespace std;
+
+// OriginCity contains a linkedList of the Destination Cities
+// Mainly used for the adjacency list
 class OriginCity {
 private:
-    string name;
-    LinkedList<DestinationCity> cityList; // Some issue here not being initialized to null
+    string name; // Name of origin city
+    LinkedList<DestinationCity> cityList; // Cities one can get to from the origin
 public:
-    //OriginCity();
-    //OriginCity(string);
-    void addCity(DestinationCity);
-    LinkedList<DestinationCity>& getCityList();
+    void addCity(DestinationCity); // Adds a destination city to the list
+    LinkedList<DestinationCity>& getCityList(); // returning the list
     void setName(string);
     string getName();
 

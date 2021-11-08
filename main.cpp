@@ -2,13 +2,6 @@
  * Fall 2021 PA 04 - Flight Planner Template Repo.
  * Based on PA 02 Template repo
  */
-
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include "LinkedList.h"
-#include "DSStack.h"
-#include "AdjacencyList.h"
 #include "Control.h"
 /**
  * catch_setup.h and catch_setup.cpp contain the #define directive for
@@ -19,19 +12,12 @@
  * machine.
  */
 #include "catch_setup.h"
-using namespace std;
 int main(int argc, char** argv) {
     if(argc == 1) {
         runCatchTests();
     }
     else {
-        std::cout << "Hello, 2341 students!" << std::endl;
-        std::cout << "Attempting to open and write to " << argv[2] << std::endl;
-        std::ofstream o(argv[3]);
-        o << "Writing to output file." << std::endl;
-        o.close();
-        Control c (argv[1], argv[2], argv[3]);
-
+        Control c (argv[1], argv[2], argv[3]); // Calling control to walk through the program
     }
     return 0;
 }

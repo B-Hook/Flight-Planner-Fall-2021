@@ -18,6 +18,8 @@ void Flight::calculateCostTime() {
     int count = 0;
     path.currToBack();
     string prevCarrier;
+    // Goes through each path, if there is a change in character or
+    // if there is multiple stop points, additional minutes will be added
     while (!path.isCurrNull()){
         if (count > 0) {
             totalCost += 23;

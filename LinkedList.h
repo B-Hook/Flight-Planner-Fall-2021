@@ -23,20 +23,17 @@ private: //private data members
     Node <T> *head;
     Node <T> *tail;
     Node <T> *curr;
-    //int *length;
 public:
 // Default Constructor
     LinkedList() {
-
         this->head = nullptr;
         this->tail = nullptr;
         this->curr = nullptr;
-        //this->length = new int (0);
     }
 // Destructor
     ~LinkedList() {
         currToFront(); //makes curr pointer the head
-        //transversing through the list deleting each node
+        // Transversing through the list deleting each node
         while (this->curr != nullptr){
             Node<T> *deletedNode = this->curr;
             this->curr = this->curr->next;
@@ -45,15 +42,12 @@ public:
         this->head = nullptr;
         this->tail = nullptr;
         this->curr = nullptr;
-        //*length = 0;
     }
 // Copy Constructor
     LinkedList(const LinkedList &copy){
         head = tail = curr = nullptr;
-        //this->length = copy.length;
-
         Node<T> *temp = copy.head;
-        //transversing through list copying each node and appending it
+        // Transversing through list copying each node and appending it
         while (temp != nullptr){
             append(temp->data);
             temp = temp->next;
@@ -65,7 +59,7 @@ public:
         if (this != &copy) {
             this->clear();
             Node<T> *temp = copy.head;
-            //transversing through list copying each node and appending it
+            // Transversing through list copying each node and appending it
             while (temp != nullptr){
                 append(temp->data);
                 temp = temp->next;
@@ -97,7 +91,7 @@ public:
 
         Node<T> *newNode = new Node<T>;
         newNode->data = newObj;
-
+        // Checks to see if empty, if so then will insert the newObj at the front
         if (this->head == nullptr) {
             newNode->next = nullptr;
             newNode->prev = nullptr;
@@ -105,21 +99,23 @@ public:
             this->tail = newNode;
 
         }
+        // If not empty then it will inserts before the current node
         else {
             newNode->prev = this->curr->prev;
             this->curr->prev = newNode;
             newNode->next = this->curr;
+            // Checking to see if the new node is at the front of the list or not
+            // If the prev does have a nullptr then it is the head and thus becomes the head
+            // If not then there is a previous value which will need to point to the newNode completing the list
             if (newNode->prev != nullptr)
                 newNode->prev->next = newNode;
             else
                 this->head = newNode;
         }
     }
-
-
-
 // Removing last node in the linked list
     void remove(){
+        // If there is only one value in the list then everything will become null
         if (this->tail->prev == nullptr){
             Node<T> *deletedNode = this->tail;
             this->head = nullptr;
@@ -127,6 +123,7 @@ public:
             this->curr = nullptr;
             free (deletedNode);
         }
+        // if not then it will remove the last node of the list
         else {
             Node<T> *deletedNode = this->tail;
             this->tail = this->tail->prev;
@@ -134,8 +131,8 @@ public:
             free (deletedNode);
         }
     }
+    // Clearing the list by freeing each node and making everything null at the end
     void clear() {
-        //Node<T> *curr = this->head;
         currToFront();
         while (this->curr != nullptr){
             Node<T> *freeNode = this->curr;
@@ -145,11 +142,12 @@ public:
         this->head = nullptr;
         this->tail = nullptr;
         this->curr = nullptr;
-        //*length = 0;
     }
+
     void currToFront() {
         this->curr = this->head;
     }
+
     void currToBack() {
         this->curr = this->tail;
     }
@@ -162,35 +160,27 @@ public:
         if (this->curr != nullptr)
             this->curr = this->curr->prev;
     }
+
     T& getCurrVal(){
         return this->curr->data;
     }
+
     T& getTailVal(){
         return this->tail->data;
     }
-    /*int getLength(){
-        return *length;
-    }*/
+
     bool checkEmpty(){
         if (this->head == nullptr)
             return true;
         else
             return false;
     }
-    bool checkNext(){
-        //currToFront();
-        if (this->curr != nullptr){
-            if (this->curr->next != nullptr)
-                return true;
-            else
-                return false;
-        }
+
+    bool isCurrNull(){
+        if (this->curr == nullptr)
+            return true;
         else
             return false;
-    }
-    bool isCurrNull(){
-        if (this->curr == nullptr) return true;
-        else return false;
     }
 
 };

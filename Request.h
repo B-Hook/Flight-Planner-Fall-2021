@@ -7,7 +7,7 @@
 
 #include <string>
 using namespace std;
-
+// Contains the request details read in from the req-flights file
 class Request {
 private:
     string departing;
