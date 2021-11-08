@@ -82,7 +82,8 @@ TEST_CASE("Testing LinkedList"){
         REQUIRE(test2.getCurrVal() == 30);
         test2.currToBack();
         test2.insert(50);
-        REQUIRE(test2.getTailVal() == 50);
+        test2.currToPrev();
+        REQUIRE(test2.getCurrVal() == 50);
     }
     SECTION("Testing Remove"){
         test1.remove();
