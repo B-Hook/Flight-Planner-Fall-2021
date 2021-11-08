@@ -69,6 +69,7 @@ TEST_CASE("Testing LinkedList"){
             count ++;
         }
         test1.insert(20);
+        test1.currToPrev();
         REQUIRE(test1.getCurrVal() == 20);
         test1.currToPrev();
         REQUIRE(test1.getCurrVal() == 4);
@@ -173,7 +174,7 @@ TEST_CASE("Testing DSStack"){
         test2.push(20);
         test2.pop();
         REQUIRE(test2.isEmpty() == true);
-        REQUIRE(test2.isEmpty() != true);
+        REQUIRE(test2.isEmpty() != false);
     }
     SECTION("Testing peek"){
         REQUIRE(test1.peek() == 9);
