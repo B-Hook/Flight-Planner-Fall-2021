@@ -52,12 +52,12 @@ void AdjacencyList::cityList(char* data) {
         // adding the origin city and its destination to the list
         OriginCity oCity;
         oCity.setName(origin);
-        DestinationCity dCity (destination, cost, minutes, airline);
+        DestinationCity dCity (destination, cost, minutes, airline, origin);
         addToList(oCity, dCity);
         // Making it so it adds the flight from the destination to the origin to the list as well
         OriginCity reverseOrigin;
         reverseOrigin.setName(destination);
-        DestinationCity reverseDestination (origin, cost, minutes, airline);
+        DestinationCity reverseDestination (origin, cost, minutes, airline, destination);
         addToList(reverseOrigin, reverseDestination);
     }
 

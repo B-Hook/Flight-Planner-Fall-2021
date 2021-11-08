@@ -11,7 +11,8 @@
 #include "OriginCity.h"
 #include "DestinationCity.h"
 #include "AdjacencyList.h"
-
+#include "Flight.h"
+#include "Itinerary.h"
 class Control {
 private:
     //LinkedList<OriginCity> passedList;

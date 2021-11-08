@@ -92,6 +92,32 @@ public:
         }
         //*length = *length + 1; // increase length by 1
     }
+// inserts before current node
+    void insert (T newObj) {
+
+        Node<T> *newNode = new Node<T>;
+        newNode->data = newObj;
+
+        if (this->head == nullptr) {
+            newNode->next = nullptr;
+            newNode->prev = nullptr;
+            this->head = newNode;
+            this->tail = newNode;
+
+        }
+        else {
+            newNode->prev = this->curr->prev;
+            this->curr->prev = newNode;
+            newNode->next = this->curr;
+            if (newNode->prev != nullptr)
+                newNode->prev->next = newNode;
+            else
+                this->head = newNode;
+        }
+    }
+
+
+
 // Removing last node in the linked list
     void remove(){
         if (this->tail->prev == nullptr){
@@ -108,7 +134,6 @@ public:
             free (deletedNode);
         }
     }
-
     void clear() {
         //Node<T> *curr = this->head;
         currToFront();
@@ -125,10 +150,17 @@ public:
     void currToFront() {
         this->curr = this->head;
     }
+    void currToBack() {
+        this->curr = this->tail;
+    }
 
     void currToNext(){
         if (this->curr != nullptr)
             this->curr = this->curr->next;
+    }
+    void currToPrev(){
+        if (this->curr != nullptr)
+            this->curr = this->curr->prev;
     }
     T& getCurrVal(){
         return this->curr->data;

@@ -7,11 +7,12 @@
 DestinationCity::DestinationCity() {
 
 }
-DestinationCity::DestinationCity(string name, int cost, int time, string carrier) {
+DestinationCity::DestinationCity(string name, int cost, int time, string carrier, string origin) {
     this->name = name;
     this->cost = cost;
     this->time = time;
     this->carrier = carrier;
+    this->origin = origin;
 }
 
 string DestinationCity::getName() {
@@ -28,5 +29,9 @@ int DestinationCity::getTime() {
 
 string DestinationCity::getCarrier() {
     return this->carrier;
+}
+
+string DestinationCity::getOrigin() {
+    return this->origin;
 }
 

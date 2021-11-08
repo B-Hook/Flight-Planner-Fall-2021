@@ -14,13 +14,15 @@ private:
     int cost;
     int time;
     string carrier;
+    string origin;
 public:
     DestinationCity();
-    DestinationCity(string, int, int, string);
+    DestinationCity(string, int, int, string, string);
     string getName();
     int getCost();
     int getTime();
     string getCarrier();
+    string getOrigin();
 
 };
 
