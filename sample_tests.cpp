@@ -66,6 +66,7 @@ TEST_CASE("Testing LinkedList"){
         int count = 0;
         while (count < 5){
             test1.currToNext();
+            count ++;
         }
         test1.insert(20);
         REQUIRE(test1.getCurrVal() == 20);
