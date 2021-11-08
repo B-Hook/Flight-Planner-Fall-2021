@@ -16,6 +16,7 @@ Control::Control(char *flights, char *requestedFlights, char *outputFile) {
         completeItinerary.append(requestedItinerary.getItinerary());
         allRequests.currToNext();
     }
+    writeToFile(outputFile);
 }
 
 void Control::readInRequests(char * requestsFile) {
@@ -42,7 +43,41 @@ void Control::readInRequests(char * requestsFile) {
 void Control::writeToFile(char *outputFile) {
 
     ofstream output (outputFile);
+    allRequests.currToFront();
+    completeItinerary.currToFront();
+    for (int i = 1; i <= numOfRequests; i++){
+        string sort;
+        if (allRequests.getCurrVal().getSort() == "T")
+            sort = "Time";
+        else
+            sort = "Cost";
+        output << "Flight " << i << ": " << allRequests.getCurrVal().getDeparting() << ", "
+        << allRequests.getCurrVal().getDestination() << " (" << sort << ")" << endl;
 
+        completeItinerary.getCurrVal().getTop3().currToFront();
+        int itineraryNum = 1;
+        while (!completeItinerary.getCurrVal().getTop3().isCurrNull()){
+            output << "  Itinerary " << itineraryNum << ":" << endl;
+            completeItinerary.getCurrVal().getTop3().getCurrVal().getPath().currToBack();
+            while (!completeItinerary.getCurrVal().getTop3().getCurrVal().getPath().isCurrNull()){
+                output << "    " <<
+                completeItinerary.getCurrVal().getTop3().getCurrVal().getPath().getCurrVal().getOrigin() <<
+                " -> " << completeItinerary.getCurrVal().getTop3().getCurrVal().getPath().getCurrVal().getName() <<
+                " (" << completeItinerary.getCurrVal().getTop3().getCurrVal().getPath().getCurrVal().getCarrier() <<
+                ")" << endl;
+                completeItinerary.getCurrVal().getTop3().getCurrVal().getPath().currToPrev();
+            }
+            output << "    Totals for Itinerary " << itineraryNum << ":  Time: " <<
+            completeItinerary.getCurrVal().getTop3().getCurrVal().getTotalTime() << " Cost: " <<
+            completeItinerary.getCurrVal().getTop3().getCurrVal().getTotalCost() << ".00" << endl;
+            completeItinerary.getCurrVal().getTop3().currToNext();
+            itineraryNum++;
+        }
+        output << endl;
+        allRequests.currToNext();
+        completeItinerary.currToNext();
+    }
+    output.close();
 }
 
 
