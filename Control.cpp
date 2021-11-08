@@ -4,6 +4,48 @@
 
 #include "Control.h"
 
+
+Control::Control(char *flights, char *requestedFlights, char *outputFile) {
+    readInRequests(requestedFlights);
+    // Making adjacency list
+    AdjacencyList myList;
+    myList.cityList(flights);
+    allRequests.currToFront();
+    for (int i = 0; i < numOfRequests; i++){
+        Backtracking requestedItinerary(allRequests.getCurrVal(), myList);
+        completeItinerary.append(requestedItinerary.getItinerary());
+        allRequests.currToNext();
+    }
+}
+
+void Control::readInRequests(char * requestsFile) {
+    ifstream requests(requestsFile);
+    string buffer;
+    getline(requests, buffer, '\n');
+    stringstream requestStream(buffer);
+    requestStream >> numOfRequests;
+
+    int count = 0;
+    // Backtracking loop which will backtrack myList based on the amount of requests
+    while (count < numOfRequests) {
+        string departing, destination, sort;
+        // Reading in one request
+        getline(requests, departing, ' ');
+        getline(requests, destination, ' ');
+        getline(requests, sort, '\n');
+        Request newRequest(departing, destination, sort);
+        allRequests.append(newRequest);
+        count++;
+    }
+}
+
+void Control::writeToFile(char *outputFile) {
+
+    ofstream output (outputFile);
+
+}
+
+
 /*void Control::backtracking(char* flights, char* requestsFile) {
 
     ifstream requests(requestsFile);
@@ -171,7 +213,3 @@
     }
 
 }*/
-
-Control::Control(char *, char *, char *) {
-
-}

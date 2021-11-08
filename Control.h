@@ -13,15 +13,21 @@
 #include "AdjacencyList.h"
 #include "Flight.h"
 #include "Itinerary.h"
+#include "Request.h"
+#include "Backtracking.h"
+
 class Control {
 private:
-    //LinkedList<OriginCity> passedList;
-    //DSStack<DestinationCity> myStack;
-    //AdjacencyList myList;
+    int numOfRequests;
+    LinkedList<Request> allRequests;
+    LinkedList<Itinerary> completeItinerary;
 
 public:
     //void backtracking (char*, char*);
-    void Control(char*, char*, char*);
+    Control(char*, char*, char*);
+    void readInRequests(char*);
+    void writeToFile(char*);
+
 
 
 };

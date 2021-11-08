@@ -30,8 +30,7 @@ int main(int argc, char** argv) {
         std::ofstream o(argv[3]);
         o << "Writing to output file." << std::endl;
         o.close();
-        Control c;
-        c.backtracking(argv[1], argv[2]);
+        Control c (argv[1], argv[2], argv[3]);
 
     }
     return 0;
